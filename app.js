@@ -23,6 +23,10 @@ class UI {
         <td><span class='remove'>X</span></td>
       </tr>`;
 
+    UI.clearInputs();
+  }
+
+  static clearInputs() {
     titleInput.value = '';
     authorInput.value = '';
     isbnInput.value = '';
@@ -56,9 +60,11 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
   } else {
     const book = new Book(title, author, isbn);
     UI.addBook(book);
+    UI.showAlert('New book added', 'success');
   }
 });
 
 bookList.addEventListener('click', function (e) {
   UI.removeBook(e.target);
+  UI.showAlert('The book removed', 'success');
 });
